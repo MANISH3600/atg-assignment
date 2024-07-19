@@ -11,6 +11,9 @@ from django.contrib.auth import authenticate, login
 from .forms import SignupForm
 from .models import UserProfile
 
+
+def index(request):
+    return render(request, 'accounts/dashboard.html')
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST, request.FILES)
