@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4; 
+        }
+        .dashboard-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+        .profile-photo {
+            border-radius: 50%;
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            object-fit: cover;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Patient Dashboard</h2>
+
+        {% if user.profile_picture %}
+            <a href="{{ user.profile_picture.url }}" target="_blank">
+                <img src="{{ user.profile_picture.url }}" alt="Profile Photo" class="profile-photo">
+            </a>
+        {% else %}
+            <p>No profile photo available.</p>
+        {% endif %}
+        <p>Welcome, {{ user.first_name }} {{ user.last_name }}</p>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+
+
+    </div>
+</body>
+</html>
