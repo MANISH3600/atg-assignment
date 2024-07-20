@@ -25,6 +25,32 @@
             object-fit: cover;
             cursor: pointer;
         }
+        h2 {
+            margin: 0;
+            padding: 10px;
+            font-size: 24px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .my-posts-btn {
+            background-color: #007bff;
+        }
+        .my-posts-btn:hover {
+            background-color: #0056b3;
+        }
+        .create-post-btn {
+            background-color: #28a745;
+        }
+        .create-post-btn:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -45,7 +71,10 @@
         <p>Email: {{ user.email }}</p>
         <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
 
-
+        <div>
+            <a href="{% url 'my_posts' %}" class="btn my-posts-btn">My Posts</a>
+            <a href="{% url 'create_blog_post' %}" class="btn create-post-btn">Create Post</a>
+        </div>
     </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import UserProfile
+from .models import UserProfile,BlogPost    
 
 class UserProfileAdmin(UserAdmin):
     model = UserProfile
@@ -21,3 +21,6 @@ class UserProfileAdmin(UserAdmin):
     ordering = ('username',)
 
 admin.site.register(UserProfile, UserProfileAdmin)
+
+
+admin.site.register(BlogPost)

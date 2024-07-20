@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +9,14 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4; 
+            background-color: #f4f4f4;
         }
         .dashboard-container {
             text-align: center;
             padding: 20px;
-            background-color: #fff; 
-            border-radius: 8px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .profile-photo {
             border-radius: 50%;
@@ -25,6 +24,21 @@
             height: 100px; /* Adjust size as needed */
             object-fit: cover;
             cursor: pointer;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .view-posts-btn {
+            background-color: #007bff;
+        }
+        .view-posts-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -39,12 +53,13 @@
         {% else %}
             <p>No profile photo available.</p>
         {% endif %}
+
         <p>Welcome, {{ user.first_name }} {{ user.last_name }}</p>
         <p>Username: {{ user.username }}</p>
         <p>Email: {{ user.email }}</p>
         <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
 
-
+        <a href="{% url 'view_blog_posts' %}" class="btn view-posts-btn">Posts</a>
     </div>
 </body>
 </html>

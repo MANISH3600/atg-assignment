@@ -43,3 +43,32 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+from django.conf import settings
+
+class BlogPost(models.Model):
+    CATEGORY_CHOICES = [
+        ('MH', 'Mental Health'),
+        ('HD', 'Heart Disease'),
+        ('CV', 'Covid19'),
+        ('IM', 'Immunization'),
+    ]
+
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='blog_images/')
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    summary = models.TextField()
+    content = models.TextField()
+    is_draft = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    def truncated_summary(self, word_limit=15):
+        words = self.summary.split()
+        if len(words) > word_limit:
+            return ' '.join(words[:word_limit]) + '...'
+        return self.summary

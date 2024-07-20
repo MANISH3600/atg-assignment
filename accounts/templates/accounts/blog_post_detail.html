@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ blog_post.title }}</title>
+    <style>
+        img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ blog_post.title }}</h2>
+    <img src="{{ blog_post.image.url }}" alt="{{ blog_post.title }}" id="post-image" style="width: 300px;" onclick="enlargeImage()">
+    <p><strong>Category:</strong> {{ blog_post.category }}</p>
+    <p><strong>Summary:</strong> {{ blog_post.summary }}</p>
+    <p>{{ blog_post.content }}</p>
+
+    <script>
+        function enlargeImage() {
+            var image = document.getElementById('post-image');
+            if (image.style.width === '300px') {
+                image.style.width = '100%';
+            } else {
+                image.style.width = '300px';
+            }
+        }
+    </script>
+</body>
+</html>
